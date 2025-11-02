@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비바리베르타 - 혼자가 아닌, 함께 성장하는 창업 생태계</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .tagline {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .vision-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 40px;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .vision-card:nth-child(2) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .vision-card:nth-child(3) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .vision-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .vision-card p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2em;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .business-model {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .business-model h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .model-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .model-card h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #f5576c;
+        }
+
+        .roadmap {
+            margin: 60px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-month {
+            flex: 0 0 100px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .contact h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-email {
+            font-size: 1.5em;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+
+        .contact-email:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #2d3748;
+            color: white;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .logo {
+                font-size: 2em;
+            }
+
+            .tagline {
+                font-size: 1.3em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-month {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">🚀 비바리베르타</div>
+            <h1 class="tagline">혼자가 아닌, 함께 성장하는 창업 생태계</h1>
+            <p class="subtitle">생각보다 실행, 혼자보다 함께</p>
+            <a href="#contact" class="cta-button">파트너십 문의하기</a>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section">
+        <h2 class="section-title">우리의 비전</h2>
+        <div class="vision-grid">
+            <div class="vision-card">
+                <h3>💡 사업 목적</h3>
+                <p>팀이 없고 아이디어가 부족한 예비 창업가들을 위한 익명 커뮤니티 플랫폼 구축</p>
+            </div>
+            <div class="vision-card">
+                <h3>🎯 비전</h3>
+                <p>혼자 하는 창업을 함께 하는 여정으로 전환하는 최고의 창업가 커뮤니티</p>
+            </div>
+            <div class="vision-card">
+                <h3>🌟 경영철학</h3>
+                <p>사람이 곧 자본이다. 함께 도전하고, 함께 성장하며, 함께 변화를 만든다</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Stats -->
+    <section class="section">
+        <h2 class="section-title">시장 기회</h2>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">57만+</div>
+                <div class="stat-label">2025 상반기 창업기업 수</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30만</div>
+                <div class="stat-label">TAM (목표 시장)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">23.7%</div>
+                <div class="stat-label">연간 스타트업 생태계 성장률</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="section">
+        <h2 class="section-title">핵심 차별화 전략</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>실행 중심 네트워킹</h3>
+                <p>단순 정보 제공을 넘어 실제 팀빌딩과 협업이 이루어지는 플랫폼</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>멘토링 + 리소스 허브</h3>
+                <p>성공한 창업가들의 실무 경험과 리소스를 직접 공유받을 수 있는 시스템</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>VC 직접 연결</h3>
+                <p>VC, 엑셀러레이터와 직접 연결 가능한 투자 매칭 플랫폼</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>익명 커뮤니티</h3>
+                <p>솔직한 고민과 실패 경험을 자유롭게 나눌 수 있는 안전한 공간</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model -->
+    <section class="section">
+        <div class="business-model">
+            <h3>지속 가능한 비즈니스 모델</h3>
+            <div class="model-grid">
+                <div class="model-card">
+                    <h4>📊 광고 수익</h4>
+                    <p><strong>초기 월 3,150만원</strong> 예상</p>
+                    <p>MAU 35,000명 기준<br>CPM 평균 7 USD</p>
+                </div>
+                <div class="model-card">
+                    <h4>💎 멘토링 수수료</h4>
+                    <p><strong>초기 월 700만원</strong> 예상</p>
+                    <p>MAU의 5% 유료 전환<br>중개 수수료 20%</p>
+                </div>
+                <div class="model-card">
+                    <h4>🚀 장기 확장</h4>
+                    <p><strong>B2B 데이터 서비스</strong></p>
+                    <p>창업 트렌드 분석<br>기업 매칭 솔루션</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section">
+        <h2 class="section-title">2025 추진 일정</h2>
+        <div class="roadmap">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-month">1-2월</div>
+                    <div class="timeline-content">
+                        <h4>서비스 개발</h4>
+                        <p>플랫폼 베타 버전 개발 및 테스트</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">3월</div>
+                    <div class="timeline-content">
+                        <h4>자체 네트워킹 행사</h4>
+                        <p>오프라인 행사 개최로 초기 커뮤니티 구축</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">4월</div>
+                    <div class="timeline-content">
+                        <h4>VC 제휴 확대</h4>
+                        <p>투자사 파트너십 구축 및 매칭 시스템 론칭</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">5월</div>
+                    <div class="timeline-content">
+                        <h4>기능 확장</h4>
+                        <p>사용자 피드백 기반 서비스 개선</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">6월</div>
+                    <div class="timeline-content">
+                        <h4>사업 분야 확장</h4>
+                        <p>금융 슈퍼앱 제작 준비 및 글로벌 진출 계획</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Needs -->
+    <section class="section">
+        <h2 class="section-title">투자 계획</h2>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">7.8억</div>
+                <div class="stat-label">총 투자 유치 목표</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2.3억</div>
+                <div class="stat-label">설립 자금</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5.5억</div>
+                <div class="stat-label">12개월 운영 자금</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="contact">
+            <h3>함께 성장하는 창업 생태계를 만들어갑니다</h3>
+            <p style="font-size: 1.2em; margin: 30px 0;">투자 및 파트너십 문의</p>
+            <a href="mailto:vivaliberta.korea@gmail.com" class="contact-email">
+                📧 vivaliberta.korea@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 비바리베르타 (Viva Liberta). All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.8;">생각보다 실행, 혼자보다 함께</p>
+    </footer>
+</body>
+</html>
